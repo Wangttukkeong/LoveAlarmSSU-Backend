@@ -1,6 +1,5 @@
 server:
   port: ${SERVER_PORT}
-
 spring:
   config:
     activate:
@@ -19,6 +18,7 @@ spring:
       ddl-auto: validate
   data:
     redis:
+      password: ${REDIS_PASSWORD}
       geo-key: ${REDIS_GEO_KEY}
       host: ${REDIS_HOST}
       port: ${REDIS_PORT}
