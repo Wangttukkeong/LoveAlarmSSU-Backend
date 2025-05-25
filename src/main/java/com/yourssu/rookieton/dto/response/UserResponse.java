@@ -23,7 +23,6 @@ public class UserResponse {
     private LocationRespose userLocation;
 
     public static UserResponse from(User user) {
-        System.err.println(user);
         List<InterestResponse> interestList = user.getInterestList().stream()
                 .map(interest -> new InterestResponse(interest.getSubCategory(), interest.getHashtagList()))
                 .toList();
