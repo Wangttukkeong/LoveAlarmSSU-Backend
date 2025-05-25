@@ -1,0 +1,28 @@
+server:
+  port: ${SERVER_PORT}
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+    import: optional:file:.env[.properties]
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  data:
+    redis:
+      geo-key: ${REDIS_GEO_KEY}
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+
+cors:
+  allow:
+    origins: ${CORS_ALLOW_ORIGINS}

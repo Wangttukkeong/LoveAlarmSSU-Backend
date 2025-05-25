@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  config:
+    activate:
+      on-profile: local
+    import: optional:file:.env[.properties]
+  datasource:
+    url: jdbc:h2:mem:yourssu;MODE=MySQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  data:
+    redis:
+      geo-key: USER_LOCATION
+      host: localhost
+      port: 6379
+springdoc:
+  packages-to-scan: com.yourssu
+  default-consumes-media-type: application/json; charset=UTF-8
+  default-produces-media-type: application/json; charset=UTF-8
+  cache:
+    disabled: true
+  api-docs:
+    path: /api-docs/json
+    groups:
+      enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui
+    tags-sorter: alpha
+    operations-sorter: alpha
+#  writer-with-order-by-keys: true
+  writer-with-default-pretty-printer: true
+
+cors:
+  allow:
+    origins: ${CORS_ALLOW_ORIGINS
