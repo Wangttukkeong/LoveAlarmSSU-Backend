@@ -20,13 +20,14 @@ spring:
       ddl-auto: create-drop
   data:
     redis:
-      geo-key: USER_LOCATION
-      host: localhost
-      port: 6379
+      geo-key: ${REDIS_GEO_KEY:USER_LOCATION}
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
 springdoc:
   packages-to-scan: com.yourssu
   default-consumes-media-type: application/json; charset=UTF-8
-  default-produces-media-type: application/json; charset=UTF-8
+  default-produces-media-type: application/json; charsedht=UTF-8
   cache:
     disabled: true
   api-docs:
@@ -43,4 +44,5 @@ springdoc:
 
 cors:
   allow:
-    origins: ${CORS_ALLOW_ORIGINS
+    origins: ${CORS_ALLOW_ORIGINS}
+
