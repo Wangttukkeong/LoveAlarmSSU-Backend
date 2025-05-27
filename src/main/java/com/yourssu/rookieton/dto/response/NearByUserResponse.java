@@ -16,6 +16,8 @@ public class NearByUserResponse {
     private UUID id;
     @Schema(description = "사용자 이름")
     private String nickname;
+    @Schema(description = "사용자 이모지")
+    private String emoji;
     @Schema(description = "사용자 관심사")
     private List<InterestResponse> interests;
     @Schema(description = "위도")

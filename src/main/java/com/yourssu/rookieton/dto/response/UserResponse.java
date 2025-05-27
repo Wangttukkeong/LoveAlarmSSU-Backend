@@ -15,6 +15,7 @@ import java.util.List;
 public class UserResponse {
     private String phoneNumber;
     private String nickname;
+    private String emoji;
     private Gender gender;
     private LocalDate birthdate;
     private Integer height;
@@ -32,6 +33,7 @@ public class UserResponse {
         return new UserResponse(
                 user.getPhoneNumber(),
                 user.getNickname(),
+                user.getEmoji(),
                 user.getGender(),
                 user.getBirthdate(),
                 user.getHeight(),
