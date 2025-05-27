@@ -70,7 +70,9 @@ public class UserService {
     public ResponseEntity<Void> updateProfile(UUID userid, UpdateUserRequest dto) {
         User user = userRepository.findById(userid)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
-        user.updateProfile(dto.getNickname(), dto.getPhoneNumber(), dto.getGender(), dto.getBirthdate(), dto.getHeight(), dto.getDepartment());
+        user.updateProfile(dto.getNickname(), dto.getPhoneNumber(), dto.getGender(),
+                            dto.getBirthdate(), dto.getHeight(), dto.getDepartment(),
+                            dto.getEmoji());
         user.updateAll(user);
         userRepository.save(user);
         return ResponseEntity.ok().build();

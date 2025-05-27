@@ -25,6 +25,9 @@ public class User {
     @Convert(converter = StringConverter.class)
     private String phoneNumber;
 
+    @Column(nullable = false, columnDefinition = "VARCHAR(191) DEFAULT ''")
+    private String emoji;
+
     @Column(nullable = false)
     private String nickname;
 
@@ -48,13 +51,14 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private UserLocation userLocation;
 
-    public void updateProfile(String nickname, String phoneNumber, Gender gender, LocalDate birthdate, Integer height, String department) {
+    public void updateProfile(String nickname, String phoneNumber, Gender gender, LocalDate birthdate, Integer height, String department, String emoji) {
         this.nickname = (nickname != null ? nickname : this.nickname);
         this.phoneNumber = (phoneNumber != null ? phoneNumber : this.phoneNumber);
         this.gender = (gender != null ? gender : this.gender);
         this.birthdate = (birthdate != null ? birthdate : this.birthdate);
         this.height = height;
         this.department = department;
+        this.emoji = (emoji != null ? emoji : this.emoji);
     }
 
     public void updateAll(User user) {
@@ -65,5 +69,6 @@ public class User {
         this.birthdate = user.getBirthdate();
         this.height = user.getHeight();
         this.department = user.getDepartment();
+        this.emoji = user.getEmoji();
     }
 }
