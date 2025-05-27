@@ -132,6 +132,7 @@ public class LocationService {
         return NearByUserResponse.builder()
                 .id(user.getId())
                 .nickname(user.getNickname())
+                .emoji(user.getEmoji())
                 .interests(interests)
                 .latitude(point.getY())
                 .longitude(point.getX())

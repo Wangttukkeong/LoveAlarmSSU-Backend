@@ -17,7 +17,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
   data:
     redis:
       password: ${REDIS_PASSWORD}
@@ -25,7 +25,7 @@ spring:
       host: ${REDIS_HOST}
       port: ${REDIS_PORT}
   log:
-    file-path: ./logs/application.log
+    file-path: ./log/application
 cors:
   allow:
     origins: ${CORS_ALLOW_ORIGINS}

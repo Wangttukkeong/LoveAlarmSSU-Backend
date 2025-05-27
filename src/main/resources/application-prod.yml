@@ -18,15 +18,15 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
   data:
     redis:
       password: ${REDIS_PASSWORD}
       geo-key: ${REDIS_GEO_KEY}
       host: ${REDIS_HOST}
       port: ${REDIS_PORT}
-#  log:
-#    file-path: ./log/application
+  log:
+    file-path: ./log/application
 cors:
   allow:
     origins: ${CORS_ALLOW_ORIGINS}
@@ -34,7 +34,7 @@ cors:
 springdoc:
   packages-to-scan: com.yourssu
   default-consumes-media-type: application/json; charset=UTF-8
-  default-produces-media-type: application/json; charsedht=UTF-8
+  default-produces-media-type: application/json; charset=UTF-8
   cache:
     disabled: true
   api-docs:
