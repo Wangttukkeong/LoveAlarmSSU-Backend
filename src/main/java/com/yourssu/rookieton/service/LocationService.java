@@ -126,7 +126,8 @@ public class LocationService {
     private NearByUserResponse toNearbyDTO(
             User user, Point point, Double distance) {
         List<InterestResponse> interests = user.getInterestList().stream()
-                .map(i -> new InterestResponse(i.getSubCategory(), i.getHashtagList()))
+                .map(i -> new InterestResponse(
+                        i.getCategory(), i.getSubCategory(), i.getHashtagList()))
                 .toList();
 
         return NearByUserResponse.builder()

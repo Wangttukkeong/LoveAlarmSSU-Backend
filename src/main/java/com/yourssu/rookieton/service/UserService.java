@@ -53,6 +53,7 @@ public class UserService {
                     .build();
             user.setUserLocation(userLocation);
         }
+        System.out.println("UserService.join: " + dto.getInterests());
         User saved = userRepository.save(user);
 
         // redis 에 위치 저장

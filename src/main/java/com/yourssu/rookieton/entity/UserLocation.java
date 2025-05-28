@@ -8,9 +8,9 @@ import java.util.UUID;
 
 @Builder
 @Entity
-@AllArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "TB_USER_LOCATION")
 public class UserLocation {

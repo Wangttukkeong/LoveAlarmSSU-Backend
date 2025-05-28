@@ -1,5 +1,6 @@
 package com.yourssu.rookieton.entity;
 
+import com.yourssu.rookieton.entity.enums.Category;
 import com.yourssu.rookieton.entity.enums.CategoryType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,6 +23,10 @@ public class UserInterest {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Category category;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

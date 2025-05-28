@@ -25,7 +25,8 @@ public class UserResponse {
 
     public static UserResponse from(User user) {
         List<InterestResponse> interestList = user.getInterestList().stream()
-                .map(interest -> new InterestResponse(interest.getSubCategory(), interest.getHashtagList()))
+                .map(interest -> new InterestResponse(
+                        interest.getCategory(), interest.getSubCategory(), interest.getHashtagList()))
                 .toList();
 
         LocationRespose userLocation = LocationRespose.from(user.getUserLocation());
