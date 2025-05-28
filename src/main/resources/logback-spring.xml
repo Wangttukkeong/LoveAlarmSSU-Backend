@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- application.yml 에 정의한 spring.log.file-path 프로퍼티 사용 -->
+    <springProperty scope="context" name="spring.log.file-path" source="spring.log.file-path"/>
+
+    <!-- 패턴 정의 -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%boldMagenta(%d{MM-dd HH:mm:ss}) [%boldYellow(%-5level)] %cyan(%logger{5}.%M) - %msg%n"/>
+    <property name="FILE_LOG_PATTERN"
+              value="%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %5level %logger{39} - %msg%n"/>
+
+    <!-- 콘솔 컬러 컨버터 -->
+    <conversionRule conversionWord="clr"
+                    converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+
+    <!-- 1) CONSOLE Appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 2) 일반 로그 FILE Appender (INFO 이상) -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${spring.log.file-path}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${spring.log.file-path}.%d{yyyy-MM-dd}.zip</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <ImmediateFlush>true</ImmediateFlush>
+        </encoder>
+    </appender>
+
+    <!-- 3) ERROR 전용 FILE Appender -->
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- ERROR 레벨 이상만 필터링 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <file>${spring.log.file-path}.error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${spring.log.file-path}.error.%d{yyyy-MM-dd}.zip</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}%ex</pattern>
+            <ImmediateFlush>true</ImmediateFlush>
+        </encoder>
+    </appender>
+
+<!--    <logger name="org.hibernate" level=""/>-->
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="ERROR_FILE"/>
+    </root>
+</configuration>
