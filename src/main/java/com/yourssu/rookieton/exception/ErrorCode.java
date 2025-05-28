@@ -23,7 +23,11 @@ public enum ErrorCode {
     DUPLICATE_INTEREST_CATEGORY(CONFLICT, "중복된 카테고리가 들어왔습니다."),
 
     EMPTY_INTEREST(BAD_REQUEST, "관심사가 비어있습니다."),
+    EMPTY_INTEREST_CATEGORY(BAD_REQUEST, "카테고리가 존재하지 않습니다."),
     EMPTY_INTEREST_SUBCATEGORY(BAD_REQUEST, "관심사가 존재하지 않습니다."),
+    INVALID_INTEREST_CATEGORY(BAD_REQUEST, "올바른 카테고리가 아닙니다."),
+    INVALID_INTEREST_SUBCATEGORY(BAD_REQUEST, "올바른 관심사가 아닙니다."),
+    MISMATCH_CATEGORY(BAD_REQUEST, "중복된 관심사가 않습니다."),
     ;
 
     private final HttpStatus httpStatus;
